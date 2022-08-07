@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>password</title>
+    <style>
+    body{
+        text-align:center;
+        align-items: center;
+        margin-top: 100px;
+        font-weight: bold;
+    }
+    input{
+        width: 300px;
+        height: 30px;
+        border-radius: 5px;
+        outline: none;
+    }
+    #hide1{
+        color: rgb(10, 218, 76);
+        display: none;
+    }
+    #hide2{
+        color: red;
+        margin-left: -25px;
+    }
+    </style>
+</head>
+<body>
+    <label>username &nbsp;</label><input type="password" id="password">
+    <span class="key">
+        <i id="hide1" class="fa fa-eye" onclick="touch()"></i>
+        <i id="hide2" class="fa fa-eye-slash" onclick="touch()"></i>
+    </span>
+
+    <script>
+        function touch(){
+            var x = document.getElementById("password");
+            var y = document.getElementById("hide1");
+            var z = document.getElementById("hide2");
+            if(x.type === "password"){
+                x.type = "text";
+                y.style.display = "block";
+                // y.style.width = "1750px";
+                // y.style.marginLeft = "-30px";
+                y.style.marginTop = "-27px";
+                z.style.display = "none";
+            }
+            else{
+                x.type = "password";
+                y.style.display = "none";
+                z.style.display = "block";
+                // z.style.marginLeft = "100px";
+                z.style.marginTop = "-27px";
+            }
+        }
+    </script>
+</body>
+</html>

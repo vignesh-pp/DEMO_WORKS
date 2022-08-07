@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"></script>
+    <title>API CALL USING AXIOS</title>
+</head>
+<body>
+    <script>
+        axios.get('https://jsonplaceholder.typicode.com/comments')
+            .then(response=>{
+                // document.write(response.data[0].email)
+                for(var i=0;i<response.data.length;i++){
+                   document.write(response.data[i].email + "<br>");
+                }
+            });
+    </script>
+</body>
+</html>

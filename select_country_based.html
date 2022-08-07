@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container{
+            margin-top: 200px;
+            margin-left: 150px;
+        }
+        .f-group{
+            float: left;
+            padding: 30px;
+        }
+        .f-group label{
+            display: block;
+            margin-bottom: 8px;
+            font-family: sans-serif;
+            font-weight: 500;
+        }
+        select{
+            border: 1px solid #555;
+            height: 40px;
+            width: 200px;
+            padding: 0 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="f-group">
+            <label for="">Choose Semester</label>
+            <select name="st1" id="st1" onchange="pop(this.id,'st2')">
+                <option value="" style="display:none">Choose Semester</option>
+                <option value="sem1">sem1</option>
+                <option value="sem2">sem2</option>
+            </select>
+        </div>
+        
+        <div class="f-group">
+            <label for="">Choose Subject</label>
+            <select name="st2" id="st2">
+                
+            </select>
+        </div>
+    </div>
+
+    <script>
+        function pop(s1,s2){
+            var s1 = document.getElementById(s1);
+            var s2 = document.getElementById(s2);
+            s2.innerHTML = "";
+            if(s1.value == "sem1"){
+                var optionArray = ['Gopi1','Auny1','Pra1'];
+            }
+            else if(s1.value == 'sem2'){
+                var optionArray = ['Gopi2','Aunty2','Pra2'];
+            }
+            for(var option in optionArray){
+                var pair = optionArray[option];
+                var newoption = document.createElement("option");
+
+                newoption.innerHTML = pair;
+                s2.options.add(newoption)
+            }
+        }
+    </script>
+</body>
+</html>
