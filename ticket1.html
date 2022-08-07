@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"></script>
+    <title>round ticket</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+        .box{
+            float: left;
+            margin-left: 40px;
+            margin-top: 30px;
+            background-color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="addtable">
+
+    </div>
+    <script>
+        
+        axios.get('https://jsonplaceholder.typicode.com/comments')
+            .then(response=>{
+                for(var i=0;i<28;i++){
+                   var table = document.createElement("table");
+                   table.style.height = "270px";
+                   table.style.width = "270px";
+                   table.style.borderRadius = "50%";
+                   table.style.border = "20px solid blue";
+                   table.setAttribute("class","box");
+
+                   var name = document.createElement("p");
+                   name.append(response.data[i].email);
+                   name.style.marginTop = "80px"; 
+                   name.style.textAlign = "center";
+                //    name.style.marginLeft = "20px";
+                   name.style.fontWeight = "100";
+                   name.style.color = "red";
+                   table.append(name);
+
+                   var a = document.createElement("a");
+                   a.href = response.data[i].body;
+                   a.append("body");
+                   a.style.marginTop = "20px";
+                   a.style.marginLeft = "90px";
+                   a.style.textAlign = "center";
+                   table.append(a);
+
+                   var addtable = document.getElementById("addtable");
+                   addtable.append(table);
+                }
+            });
+    </script>
+</body>
+</html>
