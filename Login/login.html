@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+</head>
+<body>
+    <div id="container">
+        <div>
+            <img src="undraw_enter_uhqk__2_-removebg-preview.png" id="image"> 
+        </div >
+        <div id="content">
+            <div id="ip">
+            <h2><br>Log In</h2>
+            <label>Email</label><br>
+            <input type="email" placeholder="email" id="email" onchange="emailvalidate()"><br><br>
+            <label >password</label><br>
+            <input type="password" placeholder="password" id="password" onchange="password()" required>
+                <span class="key" onclick="mypass()">
+                    <i id="hide1" class="fa fa-eye"></i>
+                    <i id="hide2" class="fa fa-eye-slash"></i>
+                </span>
+            <p id="fp" onclick="myforget()"><u style="color: green;">Forget Password?</u></p><br>
+            <input type="checkbox">Remember me<br><br>
+            <input id="but" type="submit" value="Login" onclick="login()"/>&nbsp;&nbsp;New user?<u style="color: green;"onclick="sign()">Sign up</u>
+            <br><br>
+            <p id="line">&#8212;&#8212;&#8212;&nbsp;Or Login with&nbsp;&#8212;&#8212;&#8212;</p>
+                <div id="footer">
+                    <a href="https://www.google.co.in/">
+                    <button class="social" id="google"><i class="fa fa-google-plus"></i>&nbsp;&nbsp;|&nbsp;Google
+                    </button></a>
+                    <a href="https://www.facebook.com/">
+                    <button class="social" id="facebook"><i class="fa fa-facebook-f"></i>&nbsp;&nbsp;|&nbsp;facebook
+                    </button></a>
+                    <a href="https://github.com/"><button class="social" id="github"><i class="fa fa-github"></i>&nbsp;&nbsp;|&nbsp;Github</button></a>
+                </div>
+            </div>   
+        </div>
+    </div>
+
+<script src="login.js"></script>
+</body>
+</html>
