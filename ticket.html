@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"></script>
+    <!-- <script>import PublicIcon from '@mui/icons-material/Public';</script> -->
+    <!-- <style>import PublicIcon from '@mui/icons-material/Public';</style> -->
+    <title>TICKET</title>
+</head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    a{
+        text-decoration: none;
+    }
+    a:hover{
+        text-decoration: underline;
+    }
+.box{
+    float:left;
+    margin: 10px;
+    border-radius:5px;
+}
+body{
+    margin-left:170px;
+    margin-top: 50px;
+    font-family: sans-serif;
+}
+.header{
+    height: 80px;
+    width: 230px;
+    margin-left: 20px;
+    margin-top: 15px;
+    /* text-align: center; */
+    border-bottom: 1px solid rgb(95, 94, 94);;
+    font-weight: bold;
+    font-size: large;
+}
+.body{
+    height: 120px;
+    width: 230px;
+    border-bottom: 1px solid rgb(95, 94, 94);;
+    color: rgb(95, 94, 94);
+    font-size: large;
+    margin-left: 20px;
+}
+.footer{
+    height: 30px;
+    width: 230px;
+    color: rgb(223, 103, 18);
+    font-size: large;
+    text-align: center;
+}
+</style>
+<body>
+    <div id="addtable">
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>
+            axios.get('https://api.github.com/search/repositories?q=language:Javascript')
+            .then(response=>{
+                   for(let i=0;i<response.data.items.length;i++){
+                    //  console.log(response.data.items[i].name,response.data.items[i].stargazers_count,
+                    //  response.data.items[i].language,response.data.items[i].watchers_count,
+                    //  response.data.items[i].forks_count) + "<br>";
+                    
+                        var table = document.createElement('table');
+                        table.style.height = "230px";
+                        table.style.width = "230px";
+                        table.style.border = "1px ";
+                        table.style.boxShadow = "0 3px 10px #888888";
+                        table.setAttribute("class","box");
+
+                        var div1 = document.createElement("div");
+                        div1.setAttribute("class","header");
+                        var img = document.createElement('img');
+                        img.src =response.data.items[i].owner.avatar_url;
+                        img.style.height ="30px";
+                        img.style.width = "30px";
+                        img.style.float="left";
+                        div1.append(img);
+
+                        var para = document.createElement("p");
+                        para.append(response.data.items[i].name);
+                        div1.append(para);
+                        para.style.position =  "relative";
+                        para.style.top = "5px";
+                        para.style.left = "10px";
+
+                        var br0 = document.createElement("br");
+                        div1.append(br0);
+                        $(div1).append('<svg height="20px" width="20px" float="left" class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="LinkIcon"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg>');
+                        var a = document.createElement("a");
+                        a.href = response.data.items[i].owner.url;
+                        a.style.position="absolute";
+                        var str = response.data.items[i].owner.url;
+                        if(str.length > 10){
+                            str= str.substr(str,20);
+                            str+='...';
+                        }
+                        a.append(str);
+                        div1.append(a);
+
+                        var div2 = document.createElement("div");
+                        div2.setAttribute("class","body");
+                        var br1 = document.createElement("br");
+                        var br2 = document.createElement("br");
+                        var br3 = document.createElement("br");
+                        $(div2).append('<svg height="20px" widht="20px" class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc" focusable="false" viewBox="0 0 24 20" data-testid="StarIcon"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>');
+                        div2.append("star "+ '\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0');
+                        div2.append(response.data.items[i].stargazers_count);
+                        div2.append(br1);
+                        $(div2).append('<svg height="20px" width="20px" style="color:white" class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc" focusable="false"  viewBox="0 0 24 20" data-testid="PublicIcon"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"></path></svg>');
+                        div2.append(" language ");
+                        div2.append(response.data.items[i].language);
+                        div2.append(br2);
+                        $(div2).append('<svg height="20px" width="20px" class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="RemoveRedEyeIcon"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path></svg>')
+                        div2.append(" watch "+ '\xa0\xa0\xa0\xa0\xa0\xa0');
+                        div2.append(response.data.items[i].watchers_count);
+                        div2.append(br3);
+                        $(div2).append('<svg height="20px" width="20px" class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiBox-root css-1om0hkc" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="ForkLeftIcon"><path d="M9.41 15.59 8 17l-4-4 4-4 1.41 1.41L7.83 12c1.51-.33 3.73.08 5.17 1.36V6.83l-1.59 1.59L10 7l4-4 4 4-1.41 1.41L15 6.83V21h-2v-4c-.73-2.58-3.07-3.47-5.17-3l1.58 1.59z"></path></svg>')
+                        div2.append(" fork "+ '\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0');
+                        div2.append(response.data.items[i].forks_count);
+
+                        var div3 = document.createElement("div");
+                        div3.setAttribute("class","footer");
+                        var par = document.createElement("a");
+                        par.href = response.data.items[i].description;
+                        par.append("View Description");
+                        par.style.color = "orange";
+                        div3.append(par);
+                        
+                        table.append(div1);
+                        table.append(div2);
+                        table.append(div3);
+                        var addtable = document.getElementById('addtable');
+                        addtable.append(table);
+                                            
+                   }
+            });
+    </script>
+</body>
+</html>
