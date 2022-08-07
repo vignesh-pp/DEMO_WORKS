@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login1</title>
+
+</head>
+<body>
+    <form id="myForm">
+        <input type="text" id="uname" placeholder="username"><br><br>
+        <input type="password" id="pass" placeholder="password"><br><br>
+        <input type="password" id="cpass" placeholder="repeat password"><br><br>
+        <button type="submit" onclick="validate()">submit</button>
+    </form>
+</body>
+
+<script>
+    function validate(){
+        var name = document.getElementById("uname").value;
+        var pass = document.getElementById("pass").value;
+        var cpass = document.getElementById("cpass").value;
+        // -----------------------------------username
+        if(name.trim()=="" || pass.trim()=="" || cpass.trim()==""){
+            alert("Please fill all the input fields");
+            return false;
+        }
+        else if(name.indexOf("@")==-1){
+            alert("please enter valid email");
+            return false;
+        }
+        //---------------------------------- password
+        else if(pass.length<8){
+            alert("password must have 8 characters");
+            return false;
+        }
+            else if(pass.search(/[0-9]/)==-1){
+            alert("password must have atleast 1 number");
+            return false;
+        }
+            else if(pass.search(/[a-z]/)==-1){
+                alert("password must have atleast 1 lowercase");
+                return false;
+        }
+            else if(pass.search(/[A-Z]/)==-1){
+                alert("password must have atleast 1 Uppercase");
+                return false;
+        }
+            else if(pass.search(/[!||@||#||$||%||&||*]/)==-1){
+                alert("password must have atleast 1 symbol");
+                return false;
+        }        
+        // -----------------------------------confirm password
+            else if(pass!=cpass){
+                alert("confirm password is not correect");
+                return false;
+        }
+        else{
+            window.location.href="login.html";
+        }
+    }
+</script>
+</html>
